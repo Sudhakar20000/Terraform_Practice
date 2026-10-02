@@ -1,44 +1,23 @@
-data "aws_ssm_parameter" "mongodb_sg_id" {
-    name = "/${var.project}/${var.env}/mongodb_sg_id"
+variable "project" {
+    type = string
+    default = "amazon"
 }
 
-data "aws_ssm_parameter" "redis_sg_id" {
-    name = "/${var.project}/${var.env}/redis_sg_id"
+variable "env" {
+    type = string
+    default = "dev"
 }
 
-data "aws_ssm_parameter" "rabbitmq_sg_id" {
-    name = "/${var.project}/${var.env}/rabbitmq_sg_id"
+variable "zone_id" {
+    type = string 
+    default = "Z03774782PWBJZ4CLRX9V"
 }
 
-data "aws_ssm_parameter" "mysql_sg_id" {
-    name = "/${var.project}/${var.env}/mysql_sg_id"
+variable "domain" {
+    type = string
+    default = "sudhakar.shop"
 }
 
-data "aws_ssm_parameter" "dbtire_subnet_ids" {
-    name = "/${var.project}/${var.env}/dbtire_subnet_ids"
-}
-
-data "aws_ami" "joindevops" {
-  most_recent      = true
-  owners           = ["973714476881"]
-
-  filter {
-    name   = "name"
-    values = ["Redhat-9-DevOps-Practice"]
-  }
-
-  filter {
-    name   = "root-device-type"
-    values = ["ebs"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
+variable "mysql_root_password" {
+    type = string
 }
