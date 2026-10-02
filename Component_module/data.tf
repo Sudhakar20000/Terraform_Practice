@@ -1,0 +1,44 @@
+data "aws_ami" "joindevops" {
+  most_recent      = true
+  owners           = ["973714476881"]
+
+  filter {
+    name   = "name"
+    values = ["Redhat-9-DevOps-Practice"]
+  }
+
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+}
+
+data "aws_ssm_parameter" "sg_id" {
+    name = "/${var.project}/${var.env}/${var.component}_sg_id"
+}
+
+data "aws_ssm_parameter" "apptire_subnet_ids" {
+    name = "/${var.project}/${var.env}/apptir_subnet_id"
+}
+
+data "aws_ssm_parameter" "backend_alb_listener_arn" {
+    name = "/${var.project}/${var.env}/backend_alb_listener_arn"
+}
+
+data "aws_ssm_parameter" "frontend_alb_listener_arn" {
+    name = "/${var.project}/${var.env}/frontend_alb_listener_arn"
+}
+
+data "aws_ssm_parameter" "vpc_id" {
+    name = "/${var.project}/${var.env}/vpc_id"
+}
