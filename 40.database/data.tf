@@ -15,7 +15,7 @@ data "aws_ssm_parameter" "mysql_sg_id" {
 }
 
 data "aws_ssm_parameter" "dbtire_subnet_ids" {
-    name = "/${var.project}/${var.env}/dbtire_subnet_ids"
+    name = "/${var.project}/${var.env}/dbtir_subnet_ids"
 }
 
 data "aws_ami" "joindevops" {
