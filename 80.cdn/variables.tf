@@ -15,5 +15,6 @@ variable "zone_id" {
 
 variable "domain" {
     type = string
+ 
     default = "sudhakar.shop"
 }
