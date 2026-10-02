@@ -10,5 +10,10 @@ variable "env" {
 
 variable "sg_name" {
     type = list
-    default = [ "mongodb" , "redis" ]
+    default = [ "mongodb", "redis", "mysql", "rabbitmq",
+        "catalogue", "user", "cart", "shipping", "payment",
+        "backend_alb",
+        "frontend",
+        "frontend_alb",
+        "bastion"  ]
 }

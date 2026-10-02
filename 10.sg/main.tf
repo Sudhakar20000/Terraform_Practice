@@ -2,7 +2,7 @@ resource "aws_security_group" "sg" {
   count = length(var.sg_name)
   name        = "${var.project}-${var.env}-${var.sg_name[count.index]}"
   description = "Allow inbound web and SSH traffic"
-  vpc_id      = aws_vpc.main.id 
+  vpc_id      = local.vpc_id 
 
   egress {
     description = "Allow all outbound traffic"
@@ -13,7 +13,7 @@ resource "aws_security_group" "sg" {
   }
 
   tags = merge (
-    local.common_tags
+    local.common_tags,
     {
     Name = "${var.project}-${var.env}-${var.sg_name[count.index]}"
   }
