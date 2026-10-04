@@ -12,6 +12,7 @@ locals {
         Project = var.project
         Env = var.env
         Terraform = true
+        
     }
     
 }
